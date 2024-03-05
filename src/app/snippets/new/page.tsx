@@ -1,5 +1,6 @@
 import { db } from "@/db";
 import { redirect } from "next/navigation";
+
 export default function SnippetCreatePage() {
   async function createSnippet(formData: FormData) {
     // This needs to be a Server Action
@@ -14,7 +15,8 @@ export default function SnippetCreatePage() {
         code,
       },
     });
-    console.log(snippet);
+
+    // console.log("new snippet:", snippet);
 
     // Redirect user back to the root route
     redirect("/");
@@ -35,6 +37,7 @@ export default function SnippetCreatePage() {
             id="title"
           />
         </div>
+
         <div className="flex gap-4">
           <label htmlFor="code" className="w-12">
             Code
@@ -45,6 +48,7 @@ export default function SnippetCreatePage() {
             id="code"
           />
         </div>
+
         <button type="submit" className="rounded p-2 bg-blue-200">
           Create
         </button>

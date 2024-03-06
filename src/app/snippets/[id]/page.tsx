@@ -2,11 +2,13 @@ import { db } from "@/db";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import * as actions from "@/actions";
+
 interface SnippetShowPageProps {
   params: {
     id: string;
   };
 }
+
 export default async function SnippetShowPage(props: SnippetShowPageProps) {
   await new Promise((r) => setTimeout(r, 1500));
   const id = parseInt(props.params.id);
@@ -17,7 +19,7 @@ export default async function SnippetShowPage(props: SnippetShowPageProps) {
   // console.log("id: ", id);
   // console.log("returned snippet: ", snippet);
 
-  const deleteSnippetAction = actions.deleteSnippet.bind(null, snippet?.id);
+  const deleteSnippetAction = actions.deleteSnippet.bind(null, id);
 
   if (!snippet) {
     return notFound();
@@ -32,7 +34,7 @@ export default async function SnippetShowPage(props: SnippetShowPageProps) {
 
       <div className="flex m-4 justify-between items-center">
         <h1 className="text-xl font-bold">Title: {snippet.title}</h1>
-        <div>
+        <div className="flex gap-4">
           <Link
             href={`/snippets/${snippet.id}/edit`}
             className="p-2 border rounded"

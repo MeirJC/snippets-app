@@ -27,22 +27,20 @@ export default async function SnippetShowPage(props: SnippetShowPageProps) {
 
   return (
     <div>
-      <div className="dev-only text-center">
-        <h1 className="text-4xl font-bold text-slate-300">Show Snippet Page</h1>{" "}
-        <h2 className="text-lg font-bold text-slate-500">Snippet #{id}</h2>
-      </div>
-
-      <div className="flex m-4 justify-between items-center">
-        <h1 className="text-xl font-bold">Title: {snippet.title}</h1>
+      <div className="flex m-4 justify-between items-center flex-col sm:flex-row">
+        <h1 className="text-xl font-bold">{snippet.title}</h1>
         <div className="flex gap-4">
           <Link
             href={`/snippets/${snippet.id}/edit`}
-            className="p-2 border rounded"
+            className="p-2 border rounded font-semibold hover:bg-indigo-500 hover:text-white"
           >
             Edit
           </Link>
           <form action={deleteSnippetAction}>
-            <button className="p-2 border rounded" type="submit">
+            <button
+              className="p-2 border rounded font-semibold hover:bg-red-500 hover:text-white"
+              type="submit"
+            >
               Delete
             </button>
           </form>
